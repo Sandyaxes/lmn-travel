@@ -7,26 +7,18 @@
 
   .form {
     display: flex;
-    // flex-wrap: wrap;
     width: 100%;
     min-height: 4rem;
     border-radius: 10px;
 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    // width: fit-content;
 
     @media (max-width: 800px) {
       display: block;
       padding: 10px;
       width: 100%;
       height: auto;
-      // .input-block,
-      // .field-input,
-      // input[type="submit"] {
-      //   width: 100%;
-      //   margin-top: 0;
-      // }
     }
 
     .next-btn {
@@ -39,20 +31,8 @@
     pre {
       font-size: large;
     }
-//     input::-webkit-outer-spin-button,
-// input::-webkit-inner-spin-button {
-//   -webkit-appearance: none;
-//   margin: 0;
-// }
 
-// input[type=number] {
-//   -moz-appearance: textfield;
-// }
   }
-
-  // form:hover {
-  //   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  // }
 
   .form .input-block {
     display: flex;

@@ -30,8 +30,6 @@ const InputForm = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [isSubmit, setSubmit] = useState(false);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
   const [modal, setModal] = useState(false);
 
   const firstDay = new Date(formValues.startDate);
@@ -52,14 +50,18 @@ const InputForm = () => {
   const handleChange = (e) => {
     const {name, value } = e.target;
     setFormValues({...formValues, [name]: value});
-    setStartDate(startDate);
-    setEndDate(endDate)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setErrors(validate(formValues));
     setSubmit(true)
+  }
+
+  const onKeyPress = (e) => {
+    if (!/[0-9]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
 
   const validate = (values) => {
@@ -196,11 +198,12 @@ const InputForm = () => {
                         <input
                           className="field-modal"
                           name="idNumber"
-                          type="tel"
+                          type="text"
                           placeholder="ID Number"
                           maxLength={13}
                           value={formValues.idNumber}
                           onChange={handleChange}
+                          onKeyPress={onKeyPress}
                         />
                         <p className="error-message">{errors.idNumber}</p>
                       </div>
@@ -212,9 +215,9 @@ const InputForm = () => {
                           type="text"
                           placeholder="Phone Number"
                           maxLength={10}
-                          pattern="[0-9]+"
                           value={formValues.mobileNumber}
                           onChange={handleChange}
+                          onKeyPress={onKeyPress}
                         />
                         <p className="error-message">{errors.mobileNumber}</p>
                       </div>

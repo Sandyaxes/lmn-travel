@@ -1,3 +1,4 @@
+import Footer from "./components/footer/Footer";
 import InputForm from "./components/form/InputForm";
 import Header from "./components/header/Header";
 
@@ -6,7 +7,7 @@ function App() {
     <div className="App">
     <Header />
     <InputForm />
-    Sandile Nkosi
+    <Footer />
     </div>
   );
 }
