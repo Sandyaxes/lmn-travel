@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState } from "react";
 import { disablePastDate } from '../../helpers/disablePastDate';
 import { countDays } from "../../helpers/countDays";
 import { isValidID } from "../../helpers/isValidID";
@@ -7,17 +7,15 @@ import { compareAge } from "../../helpers/compareAge";
 import { confirmBaseCity } from "../../helpers/confirmBaseCity";
 import "./InputForm.scss";
 
-let input = [
-  {name: "Vusi", age: 21, city: "JHB"},
-  {name: "Thando", age: 28, city: "CPT"},
-  {name: "Anele", age: 30, city: "PE"},
-  {name: "Lisa", age: 26, city: "DUR"},
-  {name: "Linda", age: 19, city: "JHB"},
-];
-
-
-
 const InputForm = () => {
+
+  let input = [
+    {name: "Vusi", age: 21, city: "JHB"},
+    {name: "Thando", age: 28, city: "CPT"},
+    {name: "Anele", age: 30, city: "PE"},
+    {name: "Lisa", age: 26, city: "DUR"},
+    {name: "Linda", age: 19, city: "JHB"},
+  ];
 
   const initialValues = {
     name: "",
@@ -64,13 +62,6 @@ const InputForm = () => {
     setSubmit(true)
   }
 
-  useEffect(() => {
-    console.log(errors)
-    if(Object.keys(errors).length === 0 && isSubmit) {
-      console.log(formValues);
-    }
-  },[errors, isSubmit, formValues])
-
   const validate = (values) => {
   const errors = {}
 
@@ -80,7 +71,8 @@ const InputForm = () => {
 
   if (!values.cityName) {
     errors.cityName = "City name is Required";
-  } else if (confirmBaseCity(input,[values.name, values.cityName])){
+  } 
+  else if (confirmBaseCity(input,[values.name, values.cityName])){
     errors.cityName = "You can not travel within own base city.";
   }
 
@@ -94,7 +86,8 @@ const InputForm = () => {
 
   if (!values.idNumber) {
     errors.idNumber = "ID number is Required";
-  } else if(!isValidID(values.idNumber)){
+  }
+  else if(!isValidID(values.idNumber)){
     errors.idNumber = "ID number not valid";
   } else if(getAge(values.idNumber)  !== compareAge(input, values.name)){
     errors.idNumber = "ID number do not match the age";
@@ -107,15 +100,12 @@ const InputForm = () => {
   errors.mobileNumber = "Phone number not valid";
   }
 
+
   return errors;
 };
 
-console.log(JSON.stringify(formValues, null, 2))
-
-
   return (
         <section className="layout-section">
-          <pre>{JSON.stringify(formValues, null, 2)}</pre>
           <form onSubmit={handleSubmit}>
             <div className="form">
               <div className="input-block name-input">
@@ -143,7 +133,6 @@ console.log(JSON.stringify(formValues, null, 2))
                   min={disablePastDate()}
                   value={formValues.startDate}
                   onChange={handleChange}
-                  // onClick={(e) => setStartDate(e.target.value)}
                 />
                 <p className="error-message">{errors.startDate}</p>
               </div>
@@ -156,7 +145,6 @@ console.log(JSON.stringify(formValues, null, 2))
                   min={disablePastDate()}
                   value={formValues.endDate}
                   onChange={handleChange}
-                  // onClick={(e) => setEndDate(e.target.value)}
                 />
                 <p className="error-message">{errors.endDate}</p>
               </div>
