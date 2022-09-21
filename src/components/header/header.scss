@@ -1,0 +1,27 @@
+header {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  background-color: #002b5b;
+  padding: 20px 10px;
+  width: 100%;
+
+  .logo {
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    border: solid 3px;
+    width: 4rem;
+    height: 2rem;
+  }
+
+  .no-border {
+    border: none;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    margin-left: 0.6rem;
+    padding-top: 0.2rem;
+  }
+}
